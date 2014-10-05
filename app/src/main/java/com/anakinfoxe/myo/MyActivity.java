@@ -42,13 +42,14 @@ public class MyActivity extends Activity {
         public void onConnect(Myo myo, long timestamp) {
             // Set the text color of the text view to cyan when a Myo connects.
             mTextView.setTextColor(Color.CYAN);
+
         }
 
         // onDisconnect() is called whenever a Myo has been disconnected.
         @Override
         public void onDisconnect(Myo myo, long timestamp) {
             // Set the text color of the text view to red when a Myo disconnects.
-            mTextView.setTextColor(Color.RED);
+            mTextView.setTextColor(Color.BLACK);
         }
 
         // onArmRecognized() is called whenever Myo has recognized a setup gesture after someone has put it on their
@@ -73,20 +74,20 @@ public class MyActivity extends Activity {
         @Override
         public void onOrientationData(Myo myo, long timestamp, Quaternion rotation) {
             // Calculate Euler angles (roll, pitch, and yaw) from the quaternion.
-            float roll = (float) Math.toDegrees(Quaternion.roll(rotation));
-            float pitch = (float) Math.toDegrees(Quaternion.pitch(rotation));
-            float yaw = (float) Math.toDegrees(Quaternion.yaw(rotation));
-
-            // Adjust roll and pitch for the orientation of the Myo on the arm.
-            if (mXDirection == XDirection.TOWARD_ELBOW) {
-                roll *= -1;
-                pitch *= -1;
-            }
-
-            // Next, we apply a rotation to the text view using the roll, pitch, and yaw.
-            mTextView.setRotation(roll);
-            mTextView.setRotationX(pitch);
-            mTextView.setRotationY(yaw);
+//            float roll = (float) Math.toDegrees(Quaternion.roll(rotation));
+//            float pitch = (float) Math.toDegrees(Quaternion.pitch(rotation));
+//            float yaw = (float) Math.toDegrees(Quaternion.yaw(rotation));
+//
+//            // Adjust roll and pitch for the orientation of the Myo on the arm.
+//            if (mXDirection == XDirection.TOWARD_ELBOW) {
+//                roll *= -1;
+//                pitch *= -1;
+//            }
+//
+//            // Next, we apply a rotation to the text view using the roll, pitch, and yaw.
+//            mTextView.setRotation(roll);
+//            mTextView.setRotationX(pitch);
+//            mTextView.setRotationY(yaw);
         }
 
         // onPose() is called whenever a Myo provides a new pose.
@@ -131,6 +132,8 @@ public class MyActivity extends Activity {
                 case THUMB_TO_PINKY:
 //                    mTextView.setText(getString(R.string.pose_thumbtopinky));
                     mTextView.setText("Thumb to Pinky");
+                    break;
+                default:
                     break;
             }
         }
