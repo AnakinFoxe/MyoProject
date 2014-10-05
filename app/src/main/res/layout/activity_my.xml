@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,11 +11,32 @@
 
     <TextView
         android:id="@+id/text"
-        android:text="@string/hello_world"
+        android:text="@string/content"
         android:textSize="50dp"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:ignore="SpUsage"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/start_myo"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/start_myo"
+        android:layout_below="@+id/text"
+        android:onClick="onClickStartMyo" />
+
+    <Button
+        android:id="@+id/stop_myo"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/stop_myo"
+        android:layout_below="@+id/start_myo"
+        android:onClick="onClickStopMyo" />
+
+</RelativeLayout>

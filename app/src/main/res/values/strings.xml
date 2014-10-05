@@ -3,6 +3,8 @@
 
     <string name="app_name">Myo</string>
     <string name="scan">Scan</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="content">Myo Service</string>
+    <string name="start_myo">Start Myo</string>
+    <string name="stop_myo">Stop Myo</string>
 
 </resources>
