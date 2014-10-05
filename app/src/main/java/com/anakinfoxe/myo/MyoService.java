@@ -86,9 +86,11 @@ public class MyoService extends Service {
             // based on the pose we receive.
             switch (pose) {
                 case UNKNOWN:
+                    numIntent = 0;
                     showToast("Pose: Unknown");
                     break;
                 case REST:
+                    numIntent = 0;
                     switch (mArm) {
                         case LEFT:
                             showToast("Pose: Rest Left");
@@ -99,31 +101,36 @@ public class MyoService extends Service {
                     }
                     break;
                 case FIST:
+                    numIntent = 1;
+                    showToast("Pose: Fist");
                     break;
                 case WAVE_IN:
+                    numIntent = 2;
                     showToast("Pose: Wave In");
-                    sendData();
                     break;
                 case WAVE_OUT:
+                    numIntent = 3;
                     showToast("Pose: Wave Out");
                     break;
                 case FINGERS_SPREAD:
+                    numIntent = 4;
                     showToast("Pose: Fingers Spread");
                     break;
                 case THUMB_TO_PINKY:
+                    numIntent = 5;
                     showToast("Pose: Thumb to Pinky");
                     break;
                 default:
                     break;
             }
+
+            sendData();
         }
     };
 
 
 
     private void sendData() {
-        numIntent++;
-
         // sendIntent is the object that will be broadcast outside our app
         Intent sendIntent = new Intent();
 
@@ -142,7 +149,7 @@ public class MyoService extends Service {
         // And here it goes ! our message is send to any other app that want to listen to it.
         sendBroadcast(sendIntent);
 
-        showToast("intent sent " + numIntent);
+        showToast("intent sent: " + numIntent);
     };
 
 
